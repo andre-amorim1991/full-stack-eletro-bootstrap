@@ -6,7 +6,10 @@ abstract class classConexao{
     public function conectaBD(){
 
         try{
-            $Con = new PDO("mysql: host=localhost; dbname=fseletro;chaset=utf8", "root", "");
+            //Crindo a coneccaõ com banco de dados
+            
+            $Con = new PDO("mysql: host=localhost; dbname=fseletro; charset=utf8", "root", "");
+            
             return $Con;
         }catch (PDOException $Erro){
             return $Erro->getMessage();

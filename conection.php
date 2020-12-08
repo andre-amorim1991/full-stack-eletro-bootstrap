@@ -4,6 +4,8 @@
     $password ="";
     $database = "fseletro";
 
+    $tabela = $_GET['table'];
+
     //Criando a conexão
     $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -12,15 +14,14 @@
         die("A conexão com BD falhou: " . mysqli_connect_error());
     }
 
+    setlocale(LC_MONETARY, 'pt_BR');
 
-    // setLocale(LC_MONETARY, 'PT_BR');
-
-    $sql = "select * from produtos";
+    $sql = "select * from $tabela";
     $result = $conn->query($sql);
     
-    echo"<pre>";
-    echo json_encode($result->fetch_all(MYSQLI_ASSOC));
-    echo"Aqui era pra esta o resultado";
-    echo"</pre>";
+    
+    print_r( json_encode($result->fetch_all(MYSQLI_ASSOC)));
+    
+    
     
 ?>
